@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>7-1 تركيب ووظيفة البلاستيدات الخضراء — أحياء 12</title>
+<meta name="theme-color" content="#C8102E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+<style>
+:root{
+  --om-red:#C8102E; --om-green:#009A44; --om-white:#FFFFFF;
+  --om-gold:#C9A961; --om-ink:#1F2937; --om-mute:#F5F5F5;
+  --om-accent:#0A4D2E; --om-soft-red:#FEE9EC; --om-soft-green:#E6F7EE;
+  --shadow-card:0 12px 32px rgba(31,41,55,.08), 0 2px 6px rgba(31,41,55,.06);
+}
+html,body{font-family:'Cairo',system-ui,sans-serif;background:#FAFAFA;color:var(--om-ink);}
+.reveal{font-family:'Cairo',system-ui,sans-serif;font-weight:600;}
+.reveal .slides{text-align:right;}
+.reveal .slides section{padding:0;height:100%;}
+.slide-frame{position:relative;height:100%;background:var(--om-white);padding:48px 64px 72px;display:flex;flex-direction:column;overflow:hidden;}
+.slide-frame::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:var(--om-red);}
+.slide-frame::after{content:"";position:absolute;bottom:0;left:0;right:0;height:5px;background:var(--om-green);}
+.slide-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;padding-bottom:18px;border-bottom:1px dashed rgba(200,16,46,.25);}
+.slide-header .h-title{font-size:44px;font-weight:900;color:var(--om-red);}
+.slide-header .h-meta{font-size:26px;font-weight:700;color:var(--om-accent);}
+.slide-footer{position:absolute;bottom:18px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:center;font-size:18px;font-weight:700;color:var(--om-accent);opacity:.75;}
+
+.slide-cover{background:linear-gradient(135deg,#1b5e20 0%,#388e3c 100%);color:var(--om-white);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;height:100%;position:relative;overflow:hidden;}
+.slide-cover::before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%;}
+.slide-cover::after{content:"";position:absolute;bottom:-150px;left:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,215,64,.12) 0%,transparent 70%);border-radius:50%;}
+.cover-unit{font-size:30px;font-weight:700;letter-spacing:2px;opacity:.92;background:rgba(255,255,255,.15);padding:12px 32px;border-radius:30px;margin-bottom:32px;border:1px solid rgba(255,255,255,.25);}
+.cover-title{font-size:88px;font-weight:900;line-height:1.2;margin-bottom:24px;text-shadow:0 4px 16px rgba(0,0,0,.25);}
+.cover-sub{font-size:42px;font-weight:600;opacity:.95;margin-bottom:48px;max-width:1300px;}
+.cover-meta{display:flex;gap:48px;align-items:center;justify-content:center;font-size:26px;font-weight:700;opacity:.95;}
+
+.card{background:var(--om-white);border-radius:18px;box-shadow:var(--shadow-card);padding:36px;margin-bottom:24px;position:relative;overflow:hidden;}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--om-red);}
+.card.is-green::before{background:var(--om-green);}
+.card.is-gold::before{background:var(--om-gold);}
+.card-title{font-size:42px;font-weight:900;color:var(--om-red);margin:0 0 16px;display:flex;align-items:center;gap:12px;}
+.card.is-green .card-title{color:var(--om-green);}
+.card-body{font-size:32px;font-weight:600;line-height:1.7;color:var(--om-ink);}
+
+.card-objectives ol{list-style:none;padding:0;margin:0;counter-reset:obj;}
+.card-objectives li{counter-increment:obj;display:flex;align-items:flex-start;gap:18px;padding:18px 24px;margin-bottom:12px;background:var(--om-soft-red);border-radius:14px;font-size:26px;font-weight:600;line-height:1.55;}
+.card-objectives li::before{content:counter(obj);flex-shrink:0;width:50px;height:50px;background:var(--om-red);color:var(--om-white);border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:24px;box-shadow:0 4px 12px rgba(200,16,46,.3);}
+
+.card-criteria ul{list-style:none;padding:0;margin:0;}
+.card-criteria li{display:flex;align-items:flex-start;gap:16px;padding:16px 24px;margin-bottom:10px;background:var(--om-soft-green);border-radius:14px;font-size:26px;font-weight:600;line-height:1.55;}
+.card-criteria li::before{content:"✓";flex-shrink:0;width:44px;height:44px;background:var(--om-green);color:var(--om-white);border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:26px;box-shadow:0 4px 12px rgba(0,154,68,.3);}
+
+/* معايير النجاح — مجمَّعة حسب الهدف، عمودان للإيجاز */
+.criteria-group{margin-bottom:20px;}
+.criteria-group:last-child{margin-bottom:0;}
+.criteria-group-title{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.criteria-group-title .obj-pill{background:var(--om-green);color:var(--om-white);font-size:22px;font-weight:900;padding:6px 18px;border-radius:22px;box-shadow:0 4px 12px rgba(0,154,68,.3);}
+.criteria-group-title .obj-line{flex:1;height:2px;background:linear-gradient(90deg,rgba(0,154,68,.35),transparent);}
+.criteria-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+.criteria-list li{display:flex;align-items:flex-start;gap:14px;padding:14px 20px;background:var(--om-soft-green);border-radius:14px;font-size:26px;font-weight:600;line-height:1.5;color:var(--om-ink);}
+.criteria-list li::before{content:"✓";flex-shrink:0;width:40px;height:40px;background:var(--om-green);color:var(--om-white);border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:24px;box-shadow:0 4px 12px rgba(0,154,68,.3);}
+
+.concepts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.concept-card{background:var(--om-white);border-radius:14px;padding:22px 24px;border:2px solid var(--om-mute);}
+.concept-term{font-size:32px;font-weight:900;color:var(--om-red);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--om-gold);display:inline-block;}
+.concept-def{font-size:24px;font-weight:600;line-height:1.55;color:var(--om-ink);}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.compare-col{background:var(--om-white);border-radius:18px;padding:32px;box-shadow:var(--shadow-card);position:relative;}
+.compare-col::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;border-radius:18px 18px 0 0;}
+.compare-col.col-a::before{background:var(--om-red);}
+.compare-col.col-b::before{background:var(--om-green);}
+.compare-col h3{font-size:36px;font-weight:900;margin:0 0 18px;}
+.compare-col.col-a h3{color:var(--om-red);}
+.compare-col.col-b h3{color:var(--om-green);}
+.compare-col ul{list-style:none;padding:0;}
+.compare-col li{padding:14px 20px;margin-bottom:10px;background:var(--om-mute);border-radius:10px;font-size:24px;font-weight:600;line-height:1.5;}
+
+.explain-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start;}
+.explain-points{font-size:28px;font-weight:600;line-height:1.7;list-style:none;padding:0;}
+.explain-points li{margin-bottom:16px;padding:16px 22px;background:var(--om-mute);border-radius:12px;border-right:5px solid var(--om-red);}
+.explain-points li strong{color:var(--om-red);font-weight:900;}
+.explain-points.is-green li{border-right-color:var(--om-green);}
+.explain-points.is-green li strong{color:var(--om-green);}
+.explain-visual{background:linear-gradient(135deg,#F5FFF8 0%,#FAFFFC 100%);border-radius:18px;padding:20px;display:flex;align-items:center;justify-content:center;min-height:400px;border:2px solid #C8E6C9;}
+
+.card-formative{border:2px solid var(--om-green);}
+.card-formative .card-title{color:var(--om-green);}
+.formative-badge{display:inline-block;background:var(--om-green);color:var(--om-white);padding:8px 20px;border-radius:30px;font-size:22px;font-weight:700;margin-bottom:18px;}
+.formative-q{font-size:36px;font-weight:700;color:var(--om-ink);margin-bottom:24px;line-height:1.5;}
+.mcq-options{list-style:none;padding:0;display:grid;gap:14px;}
+.mcq-options li{padding:22px 28px;background:var(--om-white);border:2px solid var(--om-mute);border-radius:14px;font-size:26px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:14px;line-height:1.5;}
+.mcq-options li::before{content:"";width:28px;height:28px;border:3px solid var(--om-mute);border-radius:50%;flex-shrink:0;transition:all .2s;}
+.mcq-options li:hover{border-color:var(--om-gold);background:#FFFBF0;transform:translateX(-4px);}
+.mcq-options li.correct{border-color:var(--om-green);background:var(--om-soft-green);}
+.mcq-options li.correct::before{background:var(--om-green);border-color:var(--om-green);box-shadow:inset 0 0 0 4px var(--om-white);}
+.mcq-options li.wrong{border-color:var(--om-red);background:var(--om-soft-red);}
+.mcq-options li.wrong::before{background:var(--om-red);border-color:var(--om-red);box-shadow:inset 0 0 0 4px var(--om-white);}
+.mcq-feedback{margin-top:20px;padding:20px 28px;border-radius:12px;background:var(--om-soft-green);border-right:6px solid var(--om-green);font-size:24px;font-weight:600;color:var(--om-accent);display:none;}
+.mcq-feedback.is-visible{display:block;}
+
+.slide-outro{background:linear-gradient(135deg,var(--om-green) 0%,#007838 100%);color:var(--om-white);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;height:100%;gap:28px;}
+.slide-outro h2{font-size:72px;font-weight:900;margin:0;}
+.slide-outro p{font-size:34px;font-weight:600;opacity:.95;max-width:1200px;line-height:1.55;}
+.outro-buttons{display:flex;gap:24px;margin-top:24px;}
+.outro-btn{display:inline-flex;align-items:center;gap:12px;padding:22px 42px;border-radius:50px;background:var(--om-white);color:var(--om-green);font-size:28px;font-weight:900;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.2);}
+.outro-btn.is-outline{background:transparent;color:var(--om-white);border:2px solid var(--om-white);}
+
+.reveal .progress{color:var(--om-gold);height:4px;}
+.reveal .controls{color:var(--om-red);}
+.reveal .slide-number{background:rgba(200,16,46,.85);color:var(--om-white);font-family:'Cairo',sans-serif;font-weight:700;padding:8px 16px;border-radius:20px;}
+
+/* خاصٌّ بهذا الدرس: الأطياف */
+.spectrum-chart{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px;}
+.spectrum-box{background:var(--om-mute);border-radius:14px;padding:18px;text-align:center;}
+.spectrum-box h4{font-size:26px;font-weight:900;margin:0 0 10px;color:var(--om-red);}
+.spectrum-box.is-green h4{color:var(--om-green);}
+.spectrum-box p{font-size:22px;font-weight:600;line-height:1.5;margin:0;}
+
+.chromatography-box{background:linear-gradient(180deg,#FFFFFF 0%,#F0F4FF 100%);border:2px solid var(--om-gold);border-radius:14px;padding:20px;}
+.rf-table{width:100%;border-collapse:collapse;font-size:24px;font-weight:600;}
+.rf-table th{background:var(--om-soft-green);color:var(--om-accent);font-weight:900;padding:14px;border:2px solid #D6E5DD;font-size:24px;}
+.rf-table td{padding:12px 14px;border:2px solid #F0F0F0;text-align:center;}
+.rf-table .rf-name{font-weight:900;}
+</style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- 1. الغلاف -->
+<section data-transition="fade">
+  <div class="slide-cover">
+    <div class="cover-unit">الوحدة 7 • الدرس 7-1</div>
+    <h1 class="cover-title">تركيب ووظيفة البلاستيدات الخضراء</h1>
+    <p class="cover-sub">🌿 مصنع الطاقة الشمسيَّة في الخليَّة النباتيَّة</p>
+    <div class="cover-meta">
+      <span>📚 أحياء — الصف الثاني عشر</span>
+      <span>•</span>
+      <span>الفصل الدراسي الثاني</span>
+      <span>•</span>
+      <span>أ. محمد الحضري</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2. الأهداف -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">🎯 أهداف الدرس</span>
+      <span class="h-meta">الوحدة 7 • الدرس 7-1 • صفحة 45-50</span>
+    </div>
+    <div class="card card-objectives">
+      <ol>
+        <li>يصف العلاقة بين تركيب البلاستيدات الخضراء، كما تظهر في الرسوم التخطيطية والصور المجهرية الإلكترونية ووظائفها.</li>
+        <li>يذكر أن البلاستيدة الخضراء تحتوي على الثايالكويدات (أغشية الثايالكويد وتجويف الثايالكويد) التي تتكدس في أكوام تسمى جرانا، وهي موقع مرحلة التفاعلات المعتمدة على الضوء وأن الستروما هي موقع مرحلة التفاعلات غير المعتمدة على الضوء.</li>
+        <li>يصف دور صبغات البلاستيدة الخضراء (كلوروفيل a، وكلوروفيل b، والكاروتين، والزانثوفيل) في امتصاص الضوء في الثايالكويدات.</li>
+        <li>يفسر أطياف الامتصاص لصبغات البلاستيدات الخضراء وأطياف النشاط للتمثيل الضوئي.</li>
+        <li>يصف ويستخدم الكروماتوجرافيا لفصل وتحديد صبغات البلاستيدات الخضراء (يجب الإشارة إلى قيم Rf في تحديد صبغات البلاستيدات الخضراء) ويفسر النتائج.</li>
+      </ol>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 3. معايير النجاح (١/٢) — الأهداف 7-1، 7-2، 7-3 -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">✓ معايير النجاح <span style="font-size:26px;font-weight:700;color:var(--om-accent)">(١ / ٢)</span></span>
+      <span class="h-meta">معايير الأهداف 7-1 و 7-2 و 7-3</span>
+    </div>
+    <div class="card is-green">
+      <div class="criteria-group">
+        <div class="criteria-group-title"><span class="obj-pill">الهدف 7-1</span><span class="obj-line"></span></div>
+        <ul class="criteria-list">
+          <li>يذكر وظيفة البلاستيدة الخضراء</li>
+          <li>يرسم ويكتب تسمية رسم تخطيطي للبلاستيدة الخضراء ليبيّن: الستروما، الصفائح، الجرانوم، الثايالكويد، الغشاءان الداخلي والخارجي، الرايبوسومات، قطيرات دهنية، حبيبات نشا</li>
+          <li>يحدد على صور مجهرية إلكترونية للبلاستيدات الخضراء: غلاف البلاستيدة الخضراء، حبيبة نشا، ستروما، جرانا، الصفائح، أغشية ثايالكويد، قطيرات دهنية</li>
+          <li>يصف تركيب الجرانا</li>
+        </ul>
+      </div>
+      <div class="criteria-group">
+        <div class="criteria-group-title"><span class="obj-pill">الهدف 7-2</span><span class="obj-line"></span></div>
+        <ul class="criteria-list">
+          <li>يسمي مرحلتَي التمثيل الضوئي</li>
+          <li>يذكر مكان حدوث كل من مرحلتَي التمثيل الضوئي في البلاستيدة الخضراء</li>
+        </ul>
+      </div>
+      <div class="criteria-group">
+        <div class="criteria-group-title"><span class="obj-pill">الهدف 7-3</span><span class="obj-line"></span></div>
+        <ul class="criteria-list">
+          <li>يكتب قائمة بأسماء الصبغات الموجودة في البلاستيدة الخضراء</li>
+          <li>يصف ترتيب صبغات التمثيل الضوئي في النظام الضوئي</li>
+          <li>يصف وظيفة صبغات البلاستيدة الخضراء</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 3. معايير النجاح (٢/٢) — الأهداف 7-4، 7-5 -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">✓ معايير النجاح <span style="font-size:26px;font-weight:700;color:var(--om-accent)">(٢ / ٢)</span></span>
+      <span class="h-meta">معايير الأهداف 7-4 و 7-5</span>
+    </div>
+    <div class="card is-green">
+      <div class="criteria-group">
+        <div class="criteria-group-title"><span class="obj-pill">الهدف 7-4</span><span class="obj-line"></span></div>
+        <ul class="criteria-list">
+          <li>يعرّف مصطلح طيف الامتصاص</li>
+          <li>يستخدم طيف الامتصاص للكلوروفيل a والكلوروفيل b والكاروتينويدات ليشرح لماذا يبدو الكلوروفيل أخضر اللون ولماذا يبدو الكاروتين برتقالي اللون</li>
+          <li>يعرّف مصطلح طيف النشاط</li>
+          <li>يشرح ما يظهره طيف النشاط للتمثيل الضوئي</li>
+          <li>يقارن بين أطياف الامتصاص لصبغات البلاستيدة الخضراء وأطياف النشاط للتمثيل الضوئي</li>
+          <li>يقترح ما تشير إليه أوجه التشابه بين أطياف الفعل وأطياف الامتصاص حول دور الصبغات الضوئية في عملية التمثيل الضوئي</li>
+        </ul>
+      </div>
+      <div class="criteria-group">
+        <div class="criteria-group-title"><span class="obj-pill">الهدف 7-5</span><span class="obj-line"></span></div>
+        <ul class="criteria-list">
+          <li>يلخص تجربة لفصل صبغات البلاستيدة الخضراء ويحسب قيم Rf لها</li>
+          <li>يستخدم قيم Rf ليحدد صبغات البلاستيدة الخضراء على الكروماتوجرام</li>
+          <li>يفسر نتائج الاستقصاءات التي تستخدم الكروماتوجرافيا لتحديد صبغات البلاستيدات الخضراء من أوراق مختلفة</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 4. المفاهيم -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">🔑 المفاهيم المرتبطة</span>
+      <span class="h-meta">المفردات الأساسيَّة</span>
+    </div>
+    <div class="card is-gold">
+      <div class="concepts-grid">
+        <div class="concept-card">
+          <div class="concept-term">البلاستيدة الخضراء</div>
+          <div class="concept-def">عضيَّة بغلاف مزدوج، موقع التمثيل الضوئي في النباتات.</div>
+        </div>
+        <div class="concept-card">
+          <div class="concept-term">الستروما</div>
+          <div class="concept-def">المادَّة الأساسيَّة، موقع التفاعلات غير المعتمدة على الضوء (دورة كالفن).</div>
+        </div>
+        <div class="concept-card">
+          <div class="concept-term">الجرانا</div>
+          <div class="concept-def">حزم من الثايلاكويدات، موقع التفاعلات المعتمدة على الضوء.</div>
+        </div>
+        <div class="concept-card">
+          <div class="concept-term">الثايلاكويد</div>
+          <div class="concept-def">قرص غشائي مسطَّح يحوي الصبغات والأنظمة الضوئيَّة.</div>
+        </div>
+        <div class="concept-card">
+          <div class="concept-term">صبغات التمثيل الضوئي</div>
+          <div class="concept-def">مواد ملوَّنة تمتصُّ أطوال موجيَّة معيَّنة من الضوء (كلوروفيل، كاروتين، زانثوفيل).</div>
+        </div>
+        <div class="concept-card">
+          <div class="concept-term">قيمة Rf</div>
+          <div class="concept-def">المسافة التي تقطعها المادَّة ÷ المسافة التي يقطعها المذيب — تحدِّد الصبغة.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 5. التمهيد -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">💡 التمهيد</span>
+      <span class="h-meta">من الميتوكوندريا إلى البلاستيدة</span>
+    </div>
+    <div class="card">
+      <div class="card-title">🤔 فكِّر معي</div>
+      <div class="card-body">
+        <p style="font-size:36px;font-weight:700;text-align:center;padding:20px 0;color:var(--om-green);">
+          الميتوكوندريا تستهلك الجلوكوز وتُنتج ATP...<br>
+          فمن أين يأتي الجلوكوز أصلاً؟
+        </p>
+        <div style="background:var(--om-soft-green);padding:24px;border-radius:14px;border-right:5px solid var(--om-green);margin-top:18px;font-size:28px;line-height:1.6;">
+          <strong style="color:var(--om-green);font-size:30px;display:block;margin-bottom:10px;">💡 الإجابة:</strong>
+          من البلاستيدة الخضراء — مصنع الطاقة الشمسيَّة الذي يلتقط ضوء الشمس ويبني السكَّر. هل تتشابه البلاستيدة مع الميتوكوندريا في تركيبها؟
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 6. شرح الهدف 1: تركيب البلاستيدة -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">📖 الهدف 1</span>
+      <span class="h-meta">تركيب البلاستيدة الخضراء</span>
+    </div>
+    <div class="card">
+      <div class="card-title">🔬 التراكيب الرئيسة (٧ مسمَّيات)</div>
+      <div class="explain-layout">
+        <ul class="explain-points is-green">
+          <li><strong>الغلاف المزدوج:</strong> غشاء خارجي (نفاذ) + داخلي (اختياري النفاذيَّة).</li>
+          <li><strong>الجرانا:</strong> حزم ثايلاكويدات متراصَّة → مساحة سطح كبيرة لامتصاص الضوء.</li>
+          <li><strong>الثايلاكويد:</strong> قرص غشائي بـ تجويف داخلي يحوي الصبغات والأنظمة الضوئيَّة.</li>
+          <li><strong>الصفائح:</strong> أغشية تربط الجرانا ببعضها.</li>
+          <li><strong>الستروما:</strong> المادَّة الأساسيَّة، تحوي إنزيمات دورة كالفن (RuBisCO).</li>
+          <li><strong>DNA حلقي + رايبوسومات 70S:</strong> دلائل النشأة الداخليَّة.</li>
+          <li><strong>حبيبات نشا + قطيرات دهنيَّة:</strong> منتجات/مخازن الطاقة.</li>
+        </ul>
+        <div class="explain-visual">
+          <object data="../diagrams/chloroplast-structure.svg" type="image/svg+xml" style="width:100%;height:400px;"></object>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 7. تقويم تكويني 1 -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">🟢 تقويم تكويني</span>
+      <span class="h-meta">بعد الهدف 1</span>
+    </div>
+    <div class="card card-formative">
+      <span class="formative-badge">سؤال سريع</span>
+      <p class="formative-q">أيُّ التراكيب الآتية تزيد مساحة السطح لامتصاص الضوء في البلاستيدة الخضراء؟</p>
+      <ul class="mcq-options">
+        <li data-correct="false">الغلاف المزدوج.</li>
+        <li data-correct="true">الجرانا (حزم الثايلاكويدات المتراصَّة).</li>
+        <li data-correct="false">حبيبات النشا.</li>
+        <li data-correct="false">DNA الحلقي.</li>
+      </ul>
+      <div class="mcq-feedback">✅ ممتاز! الجرانا تكدِّس عدداً ضخماً من الثايلاكويدات في حجم صغير، فتضاعف مساحة الصبغات الممتصَّة للضوء.</div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 8. شرح الهدف 2: مواقع المرحلتَين -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">📖 الهدف 2</span>
+      <span class="h-meta">مرحلتا التمثيل الضوئي ومكانهما</span>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-col col-a">
+        <h3>☀️ المرحلة الضوئيَّة</h3>
+        <ul>
+          <li><strong>المكان:</strong> الجرانا — أغشية الثايلاكويد.</li>
+          <li><strong>تحتاج:</strong> ضوء الشمس + ماء.</li>
+          <li><strong>تنتج:</strong> ATP + NADPH + O₂.</li>
+          <li>هناك تحدث: امتصاص الضوء، التحلُّل الضوئي للماء، الفسفرة الضوئيَّة.</li>
+        </ul>
+      </div>
+      <div class="compare-col col-b">
+        <h3>🌑 المرحلة غير الضوئيَّة</h3>
+        <ul>
+          <li><strong>المكان:</strong> الستروما — المادَّة الأساسيَّة.</li>
+          <li><strong>تحتاج:</strong> CO₂ + ATP + NADPH.</li>
+          <li><strong>تنتج:</strong> الجلوكوز (الكربوهيدرات).</li>
+          <li>هناك تحدث: دورة كالفن، تثبيت الكربون بإنزيم RuBisCO.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 9. تقويم تكويني 2 -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">🟢 تقويم تكويني</span>
+      <span class="h-meta">بعد الهدف 2</span>
+    </div>
+    <div class="card card-formative">
+      <span class="formative-badge">سؤال تطبيقي</span>
+      <p class="formative-q">إذا توقَّفت الجرانا عن العمل في خليَّة نباتيَّة، فما المرحلة التي ستتأثَّر مباشرةً؟</p>
+      <ul class="mcq-options">
+        <li data-correct="true">المرحلة الضوئيَّة (لن يُنتج ATP و NADPH).</li>
+        <li data-correct="false">المرحلة غير الضوئيَّة (دورة كالفن).</li>
+        <li data-correct="false">كلتا المرحلتَين متوقِّفتان معاً.</li>
+        <li data-correct="false">لا تأثير — البلاستيدة تعمل بدون الجرانا.</li>
+      </ul>
+      <div class="mcq-feedback">✅ صحيح! الجرانا موقع المرحلة الضوئيَّة. توقُّفها يوقف إنتاج ATP و NADPH أوَّلاً، ثمَّ تتأثَّر دورة كالفن لاحقاً لانعدام المواد المُنتَجة.</div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 10. شرح الهدف 3: الأصباغ -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">📖 الهدف 3</span>
+      <span class="h-meta">صبغات البلاستيدة — أربع صبغات</span>
+    </div>
+    <div class="card">
+      <div class="card-title">🎨 أنواع الصبغات ووظائفها</div>
+      <div class="concepts-grid">
+        <div class="concept-card" style="border-color:#388e3c;">
+          <div class="concept-term" style="color:#388e3c;">كلوروفيل a</div>
+          <div class="concept-def">الصبغة الرئيسة — يمتصُّ الأحمر والأزرق، يعكس الأخضر. الوحيد في مركز التفاعل.</div>
+        </div>
+        <div class="concept-card" style="border-color:#7cb342;">
+          <div class="concept-term" style="color:#7cb342;">كلوروفيل b</div>
+          <div class="concept-def">صبغة ملحقة — يمتصُّ أطوالاً مختلفة قليلاً وينقل الطاقة لكلوروفيل a.</div>
+        </div>
+        <div class="concept-card" style="border-color:#ff8f00;">
+          <div class="concept-term" style="color:#ff8f00;">كاروتين</div>
+          <div class="concept-def">برتقالي — يمتصُّ الأزرق والأخضر، ويحمي من الأكسدة.</div>
+        </div>
+        <div class="concept-card" style="border-color:#fbc02d;">
+          <div class="concept-term" style="color:#fbc02d;">زانثوفيل</div>
+          <div class="concept-def">أصفر — يمتصُّ أطوالاً مكمِّلة، يوسِّع نطاق الامتصاص.</div>
+        </div>
+      </div>
+      <div style="margin-top:18px;background:var(--om-soft-green);padding:20px;border-radius:12px;border-right:5px solid var(--om-green);font-size:26px;font-weight:700;">
+        💡 الفكرة: تعدُّد الصبغات يمكِّن النبات من امتصاص نطاق أوسع من الضوء.
+      </div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 11. تقويم تكويني 3 -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">🟢 تقويم تكويني</span>
+      <span class="h-meta">بعد الهدف 3</span>
+    </div>
+    <div class="card card-formative">
+      <span class="formative-badge">سؤال تذكُّر</span>
+      <p class="formative-q">أيُّ صبغة هي الوحيدة الموجودة في مركز التفاعل في النظام الضوئي؟</p>
+      <ul class="mcq-options">
+        <li data-correct="false">كلوروفيل b</li>
+        <li data-correct="true">كلوروفيل a</li>
+        <li data-correct="false">الكاروتين</li>
+        <li data-correct="false">الزانثوفيل</li>
+      </ul>
+      <div class="mcq-feedback">✅ ممتاز! كلوروفيل a هو الصبغة الرئيسة الوحيدة في مركز التفاعل. الباقي صبغات ملحقة تنقل الطاقة الممتصَّة إلى كلوروفيل a.</div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 12. شرح الهدف 4: أطياف الامتصاص والنشاط -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">📖 الهدف 4</span>
+      <span class="h-meta">طيف الامتصاص vs طيف النشاط</span>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 الفرق الجوهري</div>
+      <div class="spectrum-chart">
+        <div class="spectrum-box">
+          <h4>طيف الامتصاص</h4>
+          <p><strong>ما هو:</strong> رسم بياني يوضِّح <strong>كم تمتصُّ صبغة</strong> من كل طول موجي.<br><br>
+          <strong>المحور الأفقي:</strong> الطول الموجي (nm).<br>
+          <strong>المحور الرأسي:</strong> نسبة الامتصاص.</p>
+        </div>
+        <div class="spectrum-box is-green">
+          <h4>طيف النشاط</h4>
+          <p><strong>ما هو:</strong> رسم بياني يوضِّح <strong>كم يحدث التمثيل الضوئي</strong> عند كل طول موجي.<br><br>
+          <strong>المحور الأفقي:</strong> الطول الموجي (nm).<br>
+          <strong>المحور الرأسي:</strong> معدَّل التمثيل الضوئي.</p>
+        </div>
+      </div>
+      <div style="margin-top:18px;background:var(--om-soft-red);padding:20px;border-radius:12px;border-right:5px solid var(--om-red);font-size:26px;font-weight:700;">
+        🔬 التشابه بينهما يُثبت أنَّ الصبغات هي المسؤولة عن التمثيل الضوئي.
+      </div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 13. تقويم تكويني 4 -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">🟢 تقويم تكويني</span>
+      <span class="h-meta">بعد الهدف 4</span>
+    </div>
+    <div class="card card-formative">
+      <span class="formative-badge">سؤال تحليلي</span>
+      <p class="formative-q">لماذا يبدو الكلوروفيل أخضر اللون عند النظر إليه؟</p>
+      <ul class="mcq-options">
+        <li data-correct="false">لأنَّه يمتصُّ الضوء الأخضر.</li>
+        <li data-correct="true">لأنَّه يمتصُّ الأحمر والأزرق ويعكس الأخضر.</li>
+        <li data-correct="false">لأنَّه يعكس كل الضوء.</li>
+        <li data-correct="false">لأنَّ النبات يصنع صبغات خضراء فقط.</li>
+      </ul>
+      <div class="mcq-feedback">✅ صحيح! نرى لون الصبغة من الضوء الذي تعكسه، لا الذي تمتصُّه. الكلوروفيل يمتصُّ الأطوال الموجيَّة في نطاقَي 430-450nm (أزرق) و 660-680nm (أحمر)، ويعكس الأخضر فيظهر لنا أخضر.</div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 14. شرح الهدف 5: الكروماتوجرافيا -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">📖 الهدف 5</span>
+      <span class="h-meta">الكروماتوجرافيا وقيم Rf</span>
+    </div>
+    <div class="card">
+      <div class="card-title">🧪 فصل الصبغات تجريبياً</div>
+      <div class="explain-layout" style="grid-template-columns:1fr 1fr;">
+        <div>
+          <p style="font-size:28px;font-weight:700;line-height:1.6;margin-bottom:18px;">
+            <strong style="color:var(--om-red);">المبدأ:</strong> فصل المواد حسب ذائبيَّتها في المذيب — الصبغة الأكثر ذوباناً تتحرَّك أبعد.
+          </p>
+          <div style="background:var(--om-soft-green);padding:24px;border-radius:14px;border-right:5px solid var(--om-green);">
+            <p style="font-size:30px;font-weight:900;color:var(--om-green);margin:0 0 12px;">معامل Rf</p>
+            <p style="font-size:32px;font-weight:700;text-align:center;margin:0;direction:ltr;">
+              Rf = <span style="border-bottom:3px solid var(--om-green);padding:0 8px;">مسافة الصبغة</span> / <span style="padding:0 8px;">مسافة المذيب</span>
+            </p>
+            <p style="font-size:22px;font-weight:600;margin-top:14px;color:var(--om-accent);">
+              ⓘ لكل صبغة قيمة Rf مميِّزة تُستعمل لتحديدها.
+            </p>
+          </div>
+        </div>
+        <div class="chromatography-box">
+          <table class="rf-table">
+            <thead>
+              <tr><th>الصبغة</th><th>اللون</th><th>Rf تقريبيَّة</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="rf-name" style="color:#ff8f00;">كاروتين</td><td>برتقالي</td><td>0.95</td></tr>
+              <tr><td class="rf-name" style="color:#fbc02d;">زانثوفيل</td><td>أصفر</td><td>0.71</td></tr>
+              <tr><td class="rf-name" style="color:#388e3c;">كلوروفيل a</td><td>أخضر مزرق</td><td>0.65</td></tr>
+              <tr><td class="rf-name" style="color:#7cb342;">كلوروفيل b</td><td>أخضر مصفر</td><td>0.45</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 15. تقويم تكويني 5 -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">🟢 تقويم تكويني</span>
+      <span class="h-meta">بعد الهدف 5</span>
+    </div>
+    <div class="card card-formative">
+      <span class="formative-badge">سؤال حساب</span>
+      <p class="formative-q">في تجربة كروماتوجرافيا، قطعت صبغة 4.5 سم وقطع المذيب 6.0 سم. ما قيمة Rf لهذه الصبغة؟</p>
+      <ul class="mcq-options">
+        <li data-correct="false">Rf = 1.33 — كاروتين.</li>
+        <li data-correct="true">Rf = 0.75 — قريب من زانثوفيل.</li>
+        <li data-correct="false">Rf = 0.45 — كلوروفيل b.</li>
+        <li data-correct="false">Rf = 2.4 — قياس غير ممكن.</li>
+      </ul>
+      <div class="mcq-feedback">✅ صحيح! Rf = 4.5 ÷ 6.0 = 0.75. هذه قيمة قريبة من زانثوفيل (0.71)، فالصبغة على الأرجح زانثوفيل. لاحظ: قيمة Rf دائماً بين 0 و 1.</div>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 16. مقارنة: البلاستيدة vs الميتوكوندريا -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">⚖️ مقارنة</span>
+      <span class="h-meta">البلاستيدة الخضراء vs الميتوكوندريا</span>
+    </div>
+    <div style="display:flex;justify-content:center;height:100%;">
+      <object data="../diagrams/chloroplast-vs-mitochondrion.svg" type="image/svg+xml" style="width:90%;height:auto;max-height:700px;"></object>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 17. التقويم الختامي -->
+<section>
+  <div class="slide-frame">
+    <div class="slide-header">
+      <span class="h-title">📝 التقويم الختامي</span>
+      <span class="h-meta">أسئلة الكتاب</span>
+    </div>
+    <div class="card is-green">
+      <div class="card-title">🎓 أربعة أسئلة شاملة</div>
+      <ol style="font-size:26px;line-height:1.85;font-weight:600;padding-right:28px;">
+        <li>ارسم رسماً تخطيطياً للبلاستيدة الخضراء مع تسمية جميع التراكيب الـ٧.</li>
+        <li>قارن بين تركيب البلاستيدة الخضراء وتركيب الميتوكوندريون من حيث المادَّة الأساسيَّة والأغشية الداخليَّة.</li>
+        <li>لماذا يبدو الكاروتين برتقالي اللون؟ اشرح بناءً على الأطوال الموجيَّة التي يمتصُّها.</li>
+        <li>الزانثوفيل أصفر اللون. حدِّد نطاق الأطوال الموجيَّة التي يمتصُّها بناءً على لونه.</li>
+      </ol>
+    </div>
+    <div class="slide-footer"><span>تركيب البلاستيدات الخضراء</span><span></span></div>
+  </div>
+</section>
+
+<!-- 18. الختام -->
+<section data-transition="fade">
+  <div class="slide-outro">
+    <h2>🌿 أحسنتَ!</h2>
+    <p>أنهيتَ درس <strong>"تركيب ووظيفة البلاستيدات الخضراء"</strong>.<br>الآن تعرف كيف يلتقط النبات ضوء الشمس ويبني الجلوكوز.</p>
+    <div class="outro-buttons">
+      <a class="outro-btn" href="../index.html#quiz?lesson=7-1">📝 اختبرني الآن</a>
+      <a class="outro-btn is-outline" href="../index.html">🏠 الرجوع للمنصَّة</a>
+    </div>
+    <p style="font-size:22px;opacity:.92;margin-top:32px;">
+      أ. محمد الحضري • مدرسة ظفار للبنين • محافظة ظفار • سلطنة عُمان
+    </p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+Reveal.initialize({
+  rtl:true,hash:true,controls:true,progress:true,
+  slideNumber: function(){
+    return ['<span style="direction:ltr;display:inline-block">'+(Reveal.getIndices().h+1)+' / '+Reveal.getTotalSlides()+'</span>'];
+  },
+  center:false,transition:'slide',backgroundTransition:'fade',
+  width:1920,height:1080,margin:0.04,minScale:0.2,maxScale:2.0,
+  plugins:[RevealNotes]
+});
+document.querySelectorAll('.mcq-options li').forEach(li=>{
+  li.addEventListener('click',()=>{
+    const parent=li.parentElement;
+    if(parent.dataset.locked)return;
+    parent.dataset.locked='1';
+    const correct=li.dataset.correct==='true';
+    li.classList.add(correct?'correct':'wrong');
+    if(!correct){const t=parent.querySelector('[data-correct="true"]');if(t)t.classList.add('correct');}
+    const fb=parent.parentElement.querySelector('.mcq-feedback');
+    if(fb)fb.classList.add('is-visible');
+  });
+});
+</script>
+</body>
+</html>

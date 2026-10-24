@@ -1,0 +1,12 @@
+# macOS metadata
+.DS_Store
+# MS Office lock files
+~$*
+# Temp files
+*.tmp
+*.bak
+*.backup
+# Claude Code workspace (worktrees, local settings, session state)
+.claude/
+# Node (in case anything appears)
+node_modules/
